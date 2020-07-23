@@ -4,13 +4,13 @@
     <nav>
       <ul class="nav__links">
         <li>
-          <a href="#">About me</a>
+          <a href="#" @click.prevent="navigateTo('about')">About me</a>
         </li>
         <li>
-          <a href="#">Projects</a>
+          <a href="#" @click.prevent="navigateTo('projects')">Projects</a>
         </li>
         <li>
-          <a href="#">More</a>
+          <a href="#" @click.prevent="navigateTo('more')">More</a>
         </li>
       </ul>
     </nav>
@@ -22,7 +22,12 @@
 
 <script>
 export default {
-  name: "Navigation"
+  name: "Navigation",
+  methods: {
+    navigateTo(elementID) {
+      console.log(elementID);
+    }
+  }
 };
 </script>
 
@@ -37,10 +42,10 @@ button {
 
 .nav {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
   background-color: #201a1a;
-  padding: 30px 10%;
+  padding: 24px 10%;
 }
 
 .nav__logo {
@@ -51,10 +56,11 @@ button {
   -ms-user-select: none; /* IE10+/Edge */
   user-select: none; /* Standard */
   transition: color 0.4s ease 0s;
+  margin-right: auto;
 }
 
 .nav__logo:hover {
-  color: purple;
+  color: rgb(138, 43, 226);
 }
 
 .nav__links {
@@ -68,16 +74,18 @@ button {
 
 .nav__links li a {
   transition: color 0.4s ease 0s;
+  color: #f0f0f0;
 }
 
 .nav__links li a:hover {
   /*color: #f0f0f0;*/
-  color: purple;
+  color: rgb(138, 43, 226);
 }
 
 button {
+  margin-left: 20px;
   padding: 9px 25px;
-  background-color: rgba(0, 136, 189, 1);
+  background-color: rgba(138, 43, 226, 1);
   border: none;
   border-radius: 40px;
   cursor: pointer;
@@ -85,6 +93,6 @@ button {
 }
 
 button:hover {
-  background-color: rgba(0, 136, 189, 0.8);
+  background-color: rgba(138, 43, 226, 0.75);
 }
 </style>
