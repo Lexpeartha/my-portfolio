@@ -1,7 +1,7 @@
 <template>
   <header class="nav">
     <h2 class="nav__logo">PORTFOLIO</h2>
-    <nav>
+    <nav style="margin-top: 15px;">
       <ul class="nav__links">
         <li>
           <a href="#" @click.prevent="navigateTo('about')">About me</a>
@@ -12,18 +12,17 @@
         <li>
           <a href="#" @click.prevent="navigateTo('more')">More</a>
         </li>
+        <a href="#" class="cta">
+          <button>Contact me</button>
+        </a>
       </ul>
     </nav>
-    <a href="#" class="cta">
-      <button>Contact me</button>
-    </a>
   </header>
 </template>
 
 <script>
 export default {
-  name: "Navigation",
-  computed: {},
+  name: "MobileNavigation",
   methods: {
     navigateTo(elementID) {
       console.log(elementID);
@@ -43,10 +42,11 @@ button {
 
 .nav {
   display: flex;
-  justify-content: flex-end;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
   background-color: #201a1a;
-  padding: 20px 10%;
+  padding: 20px 8%;
   position: sticky;
   top: 0;
 }
@@ -59,6 +59,7 @@ button {
   -ms-user-select: none; /* IE10+/Edge */
   user-select: none; /* Standard */
   transition: color 0.4s ease 0s;
+  margin-left: auto;
   margin-right: auto;
 }
 
@@ -67,7 +68,11 @@ button {
 }
 
 .nav__links {
+  display: flex;
+  align-items: center;
+  text-align: center;
   list-style: none;
+  overflow: hidden;
 }
 
 .nav__links li {
@@ -86,8 +91,8 @@ button {
 }
 
 button {
-  margin-left: 20px;
-  padding: 9px 25px;
+  margin-left: 15px;
+  padding: 9px 20px;
   background-color: rgba(138, 43, 226, 1);
   border: none;
   border-radius: 40px;
