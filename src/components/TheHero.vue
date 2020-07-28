@@ -1,10 +1,10 @@
 <template>
   <div class="hero__section">
     <div class="hero__section__text">
-      <h1>Want your projects done?</h1>
-      <h4 class="shrink">
+      <h1 class="shrink">Want your projects done?</h1>
+      <h3 class="shrink">
         Focus on what's important, while I build your dream website for you!
-      </h4>
+      </h3>
       <button>Hire me</button>
       <p>
         <a href="#">Or contact me directly though this website</a>
@@ -23,7 +23,8 @@ export default {
 .hero__section {
   background: url("https://i.imgur.com/OuGq8uT.png") 50% no-repeat; /* https://bit.ly/30CMvM1 */
   background-size: cover;
-  height: 75vh;
+  height: 80vh;
+  min-height: 60vh;
   text-align: center;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -41,7 +42,6 @@ export default {
   width: 100%;
   text-shadow: 1px 1px 2px #201a1a;
 }
-
 .hero__section__text button {
   margin-top: 64px;
   margin-left: 20px;
@@ -71,6 +71,7 @@ export default {
   position: relative;
   background-repeat: no-repeat;
   transition: background-size 200ms;
+  z-index: 0;
 }
 
 .hero__section__text p a:hover {

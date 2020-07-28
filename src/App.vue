@@ -1,10 +1,15 @@
 <template>
   <div id="app">
     <component
+      style="z-index: 99;"
       :is="breakpoint == 'small' ? 'TheMobileNav' : 'TheNav'"
     ></component>
     <TheHero />
-    <a href="https://iradesign.io">Illustrations by IRA Design</a>
+    <TheMessageBoard :breakpoint="breakpoint" />
+    <a href="https://iradesign.io"
+      >Illustrations by IRA Design
+      <br />
+    </a>
   </div>
 </template>
 
@@ -12,6 +17,7 @@
 import TheNav from "@/components/TheNavigation.vue";
 import TheMobileNav from "@/components/TheMobileNav.vue";
 import TheHero from "@/components/TheHero.vue";
+import TheMessageBoard from "@/components/MessageBoard.vue";
 
 import { mapGetters } from "vuex";
 
@@ -20,7 +26,8 @@ export default {
   components: {
     TheNav,
     TheMobileNav,
-    TheHero
+    TheHero,
+    TheMessageBoard
   },
   created() {
     window.addEventListener("resize", () => {
