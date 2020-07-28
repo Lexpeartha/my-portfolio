@@ -6,6 +6,7 @@
     ></component>
     <TheHero />
     <TheMessageBoard :breakpoint="breakpoint" />
+    <TheAbout />
     <a href="https://iradesign.io"
       >Illustrations by IRA Design
       <br />
@@ -18,6 +19,7 @@ import TheNav from "@/components/TheNavigation.vue";
 import TheMobileNav from "@/components/TheMobileNav.vue";
 import TheHero from "@/components/TheHero.vue";
 import TheMessageBoard from "@/components/MessageBoard.vue";
+import AboutMe from "@/components/AboutMe.vue";
 
 import { mapGetters } from "vuex";
 
@@ -27,7 +29,8 @@ export default {
     TheNav,
     TheMobileNav,
     TheHero,
-    TheMessageBoard
+    TheMessageBoard,
+    TheAbout: AboutMe
   },
   created() {
     window.addEventListener("resize", () => {
