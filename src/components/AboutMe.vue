@@ -1,5 +1,9 @@
 <template>
-  <div class="about__section" :style="returnProperStyle('about__section')">
+  <div
+    id="about-me"
+    class="about__section"
+    :style="returnProperStyle('about__section')"
+  >
     <div class="about__image__section">
       <img
         class="about__image"
@@ -17,6 +21,15 @@
         labore esse maiores nulla facere possimus atque doloremque earum ipsum
         temporibus molestiae, quidem quos rem ex cum voluptatum nostrum numquam.
       </p>
+      <div class="my__skills">
+        <img
+          v-for="logo in logoArray"
+          :key="logo.name"
+          class="skill__logo"
+          :src="require(`@/assets/logo/` + logo.path)"
+          :alt="logo.name"
+        />
+      </div>
     </div>
   </div>
 </template>
@@ -26,6 +39,28 @@ import { mapGetters } from "vuex";
 
 export default {
   name: "About",
+  data() {
+    return {
+      logoArray: [
+        {
+          path: "html-logo.png",
+          name: "Html"
+        },
+        {
+          path: "css-logo.png",
+          name: "Css"
+        },
+        {
+          path: "vue-logo.png",
+          name: "Vue"
+        },
+        {
+          path: "shopify-logo.png",
+          name: "Shopify"
+        }
+      ]
+    };
+  },
   computed: {
     ...mapGetters(["breakpoint"])
   },
@@ -34,14 +69,16 @@ export default {
       let brpt = this.breakpoint;
       switch (type) {
         case "about__section":
-          if (brpt == "small") return "";
-          else return "display: flex;";
+          if (brpt == "medium" || brpt == "small") return "";
+          else return "display: flex; padding-left: 20%; padding-right: 20%;";
         case "about__texts":
-          if (brpt == "small") return "margin-top: 60px";
+          if (brpt == "medium")
+            return "margin-top: 60px; margin-left: 20%; margin-right: 20%;";
+          else if (brpt == "small") return "margin-top: 60px;";
           else return "";
         case "texts__p":
-          if (brpt == "small") return "";
-          else return "width: 75%;";
+          if (brpt == "medium" || brpt == "small") return "";
+          else return "";
         default:
           return "ThatDoesn'tExist";
       }
@@ -70,11 +107,22 @@ export default {
 
 .about__image__section,
 .about__texts {
-  padding-left: 60px;
-  padding-right: 60px;
+  padding-left: 10%;
+  padding-right: 10%;
 }
 
 .texts__p {
   margin-top: 15px;
+}
+
+.my__skills {
+  margin-top: 40px;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.skill__logo {
+  height: 48px;
 }
 </style>

@@ -1,14 +1,11 @@
 <template>
-  <div class="message__board">
+  <div class="message__board" :style="returnProperStyle('message__board')">
     <h2 class="main__message">
       Making websites with modern technology and frameworks, bringing them to
       life with animations and beatuiful UI
     </h2>
     <hr style="opacity: 0.6;" />
-    <div
-      class="messages__area"
-      :style="breakpoint == 'small' ? '' : 'display: flex;'"
-    >
+    <div class="messages__area" :style="returnProperStyle('messages__area')">
       <div class="message">
         <h4 class="message__title">High-quality code</h4>
         <p class="message__content">
@@ -28,12 +25,26 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
+
 export default {
   name: "MessageBoard",
-  props: {
-    breakpoint: {
-      type: String,
-      required: true
+  computed: {
+    ...mapGetters(["breakpoint"])
+  },
+  methods: {
+    returnProperStyle(type) {
+      let brpt = this.breakpoint;
+      switch (type) {
+        case "message__board":
+          if (brpt == "small") return "padding-left: 10%; padding-right: 10%;";
+          else return "padding-left: 20%; padding-right: 20%;";
+        case "messages__area":
+          if (brpt == "small") return "";
+          else return "display: flex;";
+        default:
+          return "ThatDoesn'tExist";
+      }
     }
   }
 };
@@ -43,8 +54,6 @@ export default {
 .message__board {
   margin-top: 65px;
   margin-bottom: 65px;
-  margin-left: 20%;
-  margin-right: 20%;
   display: flex;
   flex-direction: column;
   justify-content: center;
