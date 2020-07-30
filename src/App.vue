@@ -11,8 +11,15 @@
       <span slot="title">This is not a title</span>
       <span slot="content">This is not a content</span>
     </TheContent>
+    <p id="my-projects">Projects</p>
+    <TheContent :img="{ name: `always-on-time`, path: `always-on-time.svg` }">
+      <span slot="title">This is not a title</span>
+      <span slot="content">This is not a content</span>
+    </TheContent>
+    <p>Contact me</p>
+    <p id="more">More section</p>
     <a href="https://iradesign.io"
-      >Illustrations by IRA Design
+      >Illustrations by IRA Design (Footer)
       <br />
     </a>
   </div>
