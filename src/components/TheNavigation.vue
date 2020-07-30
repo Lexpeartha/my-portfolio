@@ -23,10 +23,37 @@
 <script>
 export default {
   name: "Navigation",
-  computed: {},
+  data() {
+    return {
+      aboutElement: document.getElementById("about-me"),
+      projectsElement: document.getElementById("my-projects"),
+      moreElement: document.getElementById("more")
+    };
+  },
   methods: {
     navigateTo(elementID) {
-      console.log(elementID);
+      switch (elementID) {
+        case "about":
+          this.aboutElement.scrollIntoView({
+            block: "center",
+            behavior: "smooth"
+          });
+          break;
+        case "projects":
+          this.projectsElement.scrollIntoView({
+            block: "center",
+            behavior: "smooth"
+          });
+          break;
+        case "more":
+          this.moreElement.scrollIntoView({
+            block: "center",
+            behavior: "smooth"
+          });
+          break;
+        default:
+          break;
+      }
     }
   }
 };

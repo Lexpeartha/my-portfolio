@@ -7,7 +7,7 @@
     <TheHero />
     <TheMessageBoard :breakpoint="breakpoint" />
     <TheAbout />
-    <a href="https://iradesign.io"
+    <a v-for="i in 60" :key="i" href="https://iradesign.io"
       >Illustrations by IRA Design
       <br />
     </a>
