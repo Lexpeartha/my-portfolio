@@ -26,7 +26,7 @@
           v-for="logo in logoArray"
           :key="logo.name"
           class="skill__logo"
-          :src="require(`@/assets/logo/` + logo.path)"
+          :src="require(`@/assets/logo/` + logo.file)"
           :alt="logo.name"
         />
       </div>
@@ -43,19 +43,19 @@ export default {
     return {
       logoArray: [
         {
-          path: "html-logo.png",
+          file: "html-logo.png",
           name: "Html"
         },
         {
-          path: "css-logo.png",
+          file: "css-logo.png",
           name: "Css"
         },
         {
-          path: "vue-logo.png",
+          file: "vue-logo.png",
           name: "Vue"
         },
         {
-          path: "shopify-logo.png",
+          file: "shopify-logo.png",
           name: "Shopify"
         }
       ]
