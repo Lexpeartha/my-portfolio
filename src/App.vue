@@ -3,7 +3,8 @@
     <component
       style="z-index: 99;"
       :is="breakpoint == 'small' ? 'TheMobileNav' : 'TheNav'"
-    ></component>
+    >
+    </component>
     <TheHero />
     <TheMessageBoard :breakpoint="breakpoint" />
     <TheAbout />
@@ -12,14 +13,17 @@
       <span slot="content">This is not a content</span>
     </TheContent>
     <p id="my-projects">Projects</p>
-    <TheContent :img="{ name: `always-on-time`, path: `always-on-time.svg` }">
+    <TheContent
+      :right="true"
+      :img="{ name: `always-on-time`, path: `always-on-time.svg` }"
+    >
       <span slot="title">This is not a title</span>
       <span slot="content">This is not a content</span>
     </TheContent>
     <p>Contact me</p>
     <p id="more">More section</p>
-    <a href="https://iradesign.io"
-      >Illustrations by IRA Design (Footer)
+    <a href="https://iradesign.io">
+      Illustrations by IRA Design (Footer)
       <br />
     </a>
   </div>
@@ -31,7 +35,7 @@ import TheMobileNav from "@/components/TheMobileNav.vue";
 import TheHero from "@/components/TheHero.vue";
 import TheMessageBoard from "@/components/MessageBoard.vue";
 import AboutMe from "@/components/AboutMe.vue";
-import ContentShowoff from '@/components/ContentShowoff.vue';
+import ContentShowoff from "@/components/ContentShowoff.vue";
 
 import { mapGetters } from "vuex";
 
