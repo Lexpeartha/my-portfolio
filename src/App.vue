@@ -1,22 +1,17 @@
 <template>
   <div id="app">
-    <component
-      style="z-index: 99;"
-      :is="breakpoint == 'small' ? 'TheMobileNav' : 'TheNav'"
-    >
-    </component>
+    <component style="z-index: 99;" :is="breakpoint == 'small' ? 'TheMobileNav' : 'TheNav'"></component>
     <TheHero />
     <TheMessageBoard :breakpoint="breakpoint" />
     <TheAbout />
-    <TheContent :img="{ name: `technologies`, path: `technologies.svg` }">
+    <TheContent :right="true" :img="{ name: `technologies`, path: `technologies.svg` }">
       <span slot="title">This is not a title</span>
-      <span slot="content">This is not a content</span>
+      <span
+        slot="content"
+      >Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quo ad. Necessitatibus delectus, quod laboriosam alias minima placeat ipsam fugit eum! Commodi provident ut magnam impedit, voluptatem minima labore cupiditate.</span>
     </TheContent>
     <p id="my-projects">Projects</p>
-    <TheContent
-      :right="true"
-      :img="{ name: `always-on-time`, path: `always-on-time.svg` }"
-    >
+    <TheContent :right="false" :img="{ name: `always-on-time`, path: `always-on-time.svg` }">
       <span slot="title">This is not a title</span>
       <span slot="content">This is not a content</span>
     </TheContent>
