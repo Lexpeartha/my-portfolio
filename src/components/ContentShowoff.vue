@@ -1,7 +1,11 @@
 <template>
-  <div class="content" :style="right ? `flex-direction: row-reverse;` : ``">
-    <img :src="require(`@/assets/` + img.path)" :alt="img.name" />
-    <div class="text__area">
+  <div class="content" :style="returnProperStyle(`content`)">
+    <img
+      :src="require(`@/assets/` + img.path)"
+      :alt="img.name"
+      :style="returnProperStyle(`img`)"
+    />
+    <div class="text__area" :style="returnProperStyle(`text__area`)">
       <h3>
         <slot name="title">This is default title</slot>
       </h3>
@@ -13,6 +17,8 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
+
 export default {
   name: "Show-off Content",
   props: {
@@ -25,15 +31,40 @@ export default {
       required: false,
       default: false
     }
+  },
+  computed: {
+    ...mapGetters(["breakpoint"])
+  },
+  methods: {
+    returnProperStyle(type) {
+      let brpt = this.breakpoint;
+      let styleString = "";
+      switch (type) {
+        case "content":
+          if (this.right) styleString += "flex-direction: row-reverse;";
+          if (brpt == "small") styleString += "text-align: center;";
+          else if (brpt != "small")
+            styleString +=
+              "display: flex; padding-left: 20%; padding-right: 20%;";
+          return styleString;
+        case "text__area":
+          if (brpt == "small") return "margin-top: 40px;";
+          break;
+        /* case "img": 
+          if (brpt == "small") return "height: auto;"; */
+      }
+    }
   }
 };
 </script>
 
 <style scoped>
 .content {
-  display: flex;
-  padding-left: 20%;
-  padding-right: 20%;
-  justify-content: center;
+  padding-top: 65px;
+  padding-bottom: 65px;
+  justify-content: space-around;
+}
+
+.content img {
 }
 </style>
