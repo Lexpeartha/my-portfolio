@@ -1,6 +1,10 @@
 <template>
   <div class="content" :style="returnProperStyle(`content`)">
-    <img :src="require(`@/assets/` + img.path)" :alt="img.name" :style="returnProperStyle(`img`)" />
+    <img
+      :src="require(`@/assets/` + img.path)"
+      :alt="img.name"
+      :style="returnProperStyle(`img`)"
+    />
     <div class="text__area" :style="returnProperStyle(`text__area`)">
       <h3>
         <slot name="title">This is default title</slot>
@@ -47,9 +51,7 @@ export default {
         case "text__area":
           if (brpt == "small" || brpt == "medium")
             return "margin-top: 40px; margin-left: 20%; margin-right: 20%;";
-          break;
-        /* case "img": 
-          if (brpt == "small") return "height: auto;"; */
+          return this.right ? "margin-right: 8%;" : "margin-left: 8%;";
       }
     }
   }
@@ -68,6 +70,5 @@ export default {
 }
 
 .text__area {
-  margin-right: 5%;
 }
 </style>
