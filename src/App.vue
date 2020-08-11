@@ -19,7 +19,7 @@
         cupiditate.</span
       >
     </TheContent>
-    <TheProjects />
+    <TheProjects id="my-projects" />
     <TheContent
       :right="false"
       :img="{ name: `always-on-time`, path: `always-on-time.svg` }"
@@ -45,7 +45,7 @@ import TheHero from "@/components/TheHero.vue";
 import TheMessageBoard from "@/components/MessageBoard.vue";
 import AboutMe from "@/components/AboutMe.vue";
 import ContentShowoff from "@/components/ContentShowoff.vue";
-import TheProjects from '@/components/TheProjects.vue';
+import TheProjects from "@/components/TheProjects.vue";
 import TheFooter from "@/components/TheFooter.vue";
 
 import { mapGetters } from "vuex";
