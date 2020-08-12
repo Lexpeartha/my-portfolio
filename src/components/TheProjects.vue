@@ -3,6 +3,8 @@
     <h1 class="projects__title">This is title</h1>
     <div class="project__cards">
       <ProjectCard />
+      <ProjectCard />
+      <ProjectCard />
     </div>
   </div>
 </template>
@@ -20,7 +22,7 @@ export default {
 
 <style scoped>
 .projects__section {
-  background: url("https://i.imgur.com/wIp9maY.jpg") 50% no-repeat;
+  background: url("https://i.imgur.com/cHnXkmb.jpg") 50% no-repeat;
   background-size: cover;
   padding-top: 65px;
   padding-bottom: 65px;
@@ -39,6 +41,9 @@ export default {
 }
 
 .project__cards {
+  width: 80%;
   display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
 }
 </style>

@@ -1,12 +1,17 @@
 <template>
   <div class="project__card">
     <img
-      src="https://via.placeholder.com/350x150.png?text=Pretty+awesome+project"
+      src="https://via.placeholder.com/300x170.png?text=Pretty+awesome+project"
       alt="Project image"
     />
     <div class="project__content">
       <h3>This is the name of the project</h3>
-      <p>This is a long long long long really simple description</p>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus
+        quasi id maxime minima perferendis non error voluptas consequatur,
+        architecto minus aliquam quod ad obcaecati voluptatem accusamus sint ut
+        repellat odit.
+      </p>
       <button>View</button>
       <button>See code</button>
     </div>
@@ -23,6 +28,7 @@ export default {
 .project__card {
   color: black;
   background-color: whitesmoke;
+  max-width: 380px;
 }
 
 .project__card img {
@@ -34,5 +40,13 @@ export default {
   padding-bottom: 24px;
   padding-left: 10%;
   padding-right: 10%;
+}
+
+.project__content h3 {
+  margin-bottom: 24px;
+}
+
+.project__content p {
+  margin-bottom: 24px;
 }
 </style>
