@@ -9,7 +9,7 @@
       <h3>
         <slot name="title">This is default title</slot>
       </h3>
-      <p style="margin-top: 15px;">
+      <p>
         <slot name="content">This is default content of the body</slot>
       </p>
     </div>
@@ -50,7 +50,7 @@ export default {
           return styleString;
         case "text__area":
           if (brpt == "small" || brpt == "medium")
-            return "margin-top: 40px; margin-left: 20%; margin-right: 20%;";
+            return "margin-top: 40px; margin-left: 10%; margin-right: 10%;";
           return this.right ? "margin-right: 8%;" : "margin-left: 8%;";
       }
     }
@@ -69,6 +69,8 @@ export default {
   height: 280px;
 }
 
-.text__area {
+.text__area p {
+  margin-top: 15px;
+  text-align: left;
 }
 </style>

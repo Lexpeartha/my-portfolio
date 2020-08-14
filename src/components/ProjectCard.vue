@@ -12,8 +12,10 @@
         architecto minus aliquam quod ad obcaecati voluptatem accusamus sint ut
         repellat odit.
       </p>
-      <button>View</button>
-      <button>See code</button>
+      <div class="button__section">
+        <button>Demo</button>
+        <button>Code</button>
+      </div>
     </div>
   </div>
 </template>
@@ -28,6 +30,7 @@ export default {
 .project__card {
   color: black;
   background-color: whitesmoke;
+  margin: 2em 0;
   max-width: 380px;
 }
 
@@ -48,5 +51,12 @@ export default {
 
 .project__content p {
   margin-bottom: 24px;
+}
+
+.button__section {
+  margin: 0 auto;
+  width: 40%;
+  display: flex;
+  justify-content: space-between;
 }
 </style>

@@ -1,7 +1,10 @@
 <template>
   <div class="projects__section">
-    <h1 class="projects__title">This is title</h1>
+    <h1>This is title</h1>
     <div class="project__cards">
+      <ProjectCard />
+      <ProjectCard />
+      <ProjectCard />
       <ProjectCard />
       <ProjectCard />
       <ProjectCard />
@@ -34,10 +37,19 @@ export default {
   -webkit-align-items: center;
   -ms-flex-align: center;
   align-items: center;
+  align-content: space-around;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
   color: whitesmoke;
+}
+
+.projects__section:hover {
+  /* The part where it transitions to translateY and background shadow  */
+}
+
+.projects__section h1 {
+  margin-bottom: 36px;
 }
 
 .project__cards {
