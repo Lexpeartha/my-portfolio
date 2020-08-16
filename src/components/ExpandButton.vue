@@ -1,9 +1,11 @@
 <template>
   <div class="project__expands">
     <button @click="emitChange()">
-      <i :class="'fas fa-arrow-' + (expand ? 'down' : 'up')"></i>
-      {{ expand ? 'Show more' : 'Show less' }}
-      <i :class="'fas fa-arrow-' + (expand ? 'down' : 'up')"></i>
+      <i :class="'fas fa-arrow-' + (expand ? 'up' : 'down')"></i>
+      {{ expand ? 'Show less' : 'Show more' }}
+      <i
+        :class="'fas fa-arrow-' + (expand ? 'up' : 'down')"
+      ></i>
     </button>
   </div>
 </template>
@@ -26,6 +28,10 @@ export default {
 </script>
 
 <style scoped>
+div {
+  margin-top: 36px;
+}
+
 button {
   margin-left: 20px;
   padding: 9px 25px;
