@@ -2,23 +2,94 @@
   <div class="projects__section">
     <h1>This is title</h1>
     <div class="project__cards">
-      <ProjectCard />
-      <ProjectCard />
-      <ProjectCard />
-      <ProjectCard />
-      <ProjectCard />
-      <ProjectCard />
+      <ProjectCard
+        v-for="projectNum in showingProjectAmount"
+        :key="projectNum"
+        :projectData="projects[projectNum - 1]"
+      />
     </div>
+    <ExpandButton @change-state="expandOrShrink()" :expand="expanded" />
   </div>
 </template>
 
 <script>
 import ProjectCard from "@/components/ProjectCard.vue";
+import ExpandButton from "@/components/ExpandButton.vue";
 
 export default {
   name: "Projects",
   components: {
-    ProjectCard
+    ProjectCard,
+    ExpandButton
+  },
+  data() {
+    return {
+      expanded: true,
+      projects: [
+        {
+          title: "This is the name of the project",
+          content: `Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus
+        quasi id maxime minima perferendis non error voluptas consequatur,
+        architecto minus aliquam quod ad obcaecati voluptatem accusamus sint ut
+        repellat odit.`,
+          imageThumbnail: null,
+          codeLink: null,
+          demoLink: null
+        },
+        {
+          title: "This is the name of the project",
+          content: `Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus
+        quasi id maxime minima perferendis non error voluptas consequatur,
+        architecto minus aliquam quod ad obcaecati voluptatem accusamus sint ut
+        repellat odit.`,
+          imageThumbnail: null,
+          codeLink: null,
+          demoLink: null
+        },
+        {
+          title: "This is the name of the project",
+          content: `Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus
+        quasi id maxime minima perferendis non error voluptas consequatur,
+        architecto minus aliquam quod ad obcaecati voluptatem accusamus sint ut
+        repellat odit.`,
+          imageThumbnail: null,
+          codeLink: null,
+          demoLink: null
+        },
+        {
+          title: "This is the name of the project",
+          content: `Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus
+        quasi id maxime minima perferendis non error voluptas consequatur,
+        architecto minus aliquam quod ad obcaecati voluptatem accusamus sint ut
+        repellat odit.`,
+          imageThumbnail: null,
+          codeLink: null,
+          demoLink: null
+        },
+        {
+          title: "This is the name of the project",
+          content: `Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus
+        quasi id maxime minima perferendis non error voluptas consequatur,
+        architecto minus aliquam quod ad obcaecati voluptatem accusamus sint ut
+        repellat odit.`,
+          imageThumbnail: null,
+          codeLink: null,
+          demoLink: null
+        }
+      ]
+    };
+  },
+  computed: {
+    showingProjectAmount() {
+      if (this.expanded) {
+        return this.projects.length;
+      } else return 3;
+    }
+  },
+  methods: {
+    expandOrShrink() {
+      this.expanded = !this.expanded;
+    }
   }
 };
 </script>

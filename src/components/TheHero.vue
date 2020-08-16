@@ -50,11 +50,11 @@ export default {
   border: none;
   border-radius: 40px;
   cursor: pointer;
-  transition: background-color 0.4s ease 0s;
+  transition: transform 0.3s ease-out;
 }
 
 .hero__section__text button:hover {
-  background-color: rgba(245, 245, 245, 0.8);
+  transform: scale(1.05);
 }
 
 .hero__section__text p {

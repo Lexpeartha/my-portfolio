@@ -5,16 +5,12 @@
       alt="Project image"
     />
     <div class="project__content">
-      <h3>This is the name of the project</h3>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus
-        quasi id maxime minima perferendis non error voluptas consequatur,
-        architecto minus aliquam quod ad obcaecati voluptatem accusamus sint ut
-        repellat odit.
-      </p>
+      <h3>{{ projectData.title }}</h3>
+      <p>{{ projectData.content }}</p>
       <div class="button__section">
-        <button>Demo</button>
-        <button>Code</button>
+        <i class="fas fa-code"></i>
+
+        <i class="fas fa-eye"></i>
       </div>
     </div>
   </div>
@@ -22,7 +18,13 @@
 
 <script>
 export default {
-  name: "Project Card"
+  name: "ProjectCard",
+  props: {
+    projectData: {
+      type: Object,
+      require: true
+    }
+  }
 };
 </script>
 
@@ -32,10 +34,12 @@ export default {
   background-color: whitesmoke;
   margin: 2em 0;
   max-width: 380px;
+  border-radius: 15px;
 }
 
 .project__card img {
   width: 100%;
+  border-radius: 15px 15px 0 0;
 }
 
 .project__content {
@@ -58,5 +62,15 @@ export default {
   width: 40%;
   display: flex;
   justify-content: space-between;
+}
+
+.button__section i {
+  font-size: 125%;
+  transition: transform 0.3s ease-out;
+  cursor: pointer;
+}
+
+.button__section i:hover {
+  transform: scale(1.3);
 }
 </style>

@@ -20,7 +20,7 @@
 import { mapGetters } from "vuex";
 
 export default {
-  name: "Show-off Content",
+  name: "ShowOffContent",
   props: {
     img: {
       type: Object,
