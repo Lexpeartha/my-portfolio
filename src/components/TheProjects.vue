@@ -8,19 +8,19 @@
         :projectData="projects[projectNum - 1]"
       />
     </div>
-    <div class="project__expands">
-      <button @click="expandOrShrink()">Expand</button>
-    </div>
+    <ExpandButton @change-state="expandOrShrink()" :expand="expanded" />
   </div>
 </template>
 
 <script>
 import ProjectCard from "@/components/ProjectCard.vue";
+import ExpandButton from "@/components/ExpandButton.vue";
 
 export default {
   name: "Projects",
   components: {
-    ProjectCard
+    ProjectCard,
+    ExpandButton
   },
   data() {
     return {

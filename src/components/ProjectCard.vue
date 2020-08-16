@@ -3,7 +3,6 @@
     <img
       src="https://via.placeholder.com/300x170.png?text=Pretty+awesome+project"
       alt="Project image"
-      style="overflow: hidden;"
     />
     <div class="project__content">
       <h3>{{ projectData.title }}</h3>
