@@ -3,15 +3,15 @@
     <img
       src="https://via.placeholder.com/300x170.png?text=Pretty+awesome+project"
       alt="Project image"
+      style="overflow: hidden;"
     />
     <div class="project__content">
       <h3>{{ projectData.title }}</h3>
-      <p>
-        {{ projectData.content }}
-      </p>
+      <p>{{ projectData.content }}</p>
       <div class="button__section">
-        <button>Demo</button>
-        <button>Code</button>
+        <i class="fas fa-code"></i>
+
+        <i class="fas fa-eye"></i>
       </div>
     </div>
   </div>
@@ -19,7 +19,7 @@
 
 <script>
 export default {
-  name: "Project Card",
+  name: "ProjectCard",
   props: {
     projectData: {
       type: Object,
@@ -35,10 +35,12 @@ export default {
   background-color: whitesmoke;
   margin: 2em 0;
   max-width: 380px;
+  border-radius: 15px;
 }
 
 .project__card img {
   width: 100%;
+  border-radius: 15px 15px 0 0;
 }
 
 .project__content {
@@ -61,5 +63,15 @@ export default {
   width: 40%;
   display: flex;
   justify-content: space-between;
+}
+
+.button__section i {
+  font-size: 125%;
+  transition: transform 0.3s ease-out;
+  cursor: pointer;
+}
+
+.button__section i:hover {
+  transform: scale(1.3);
 }
 </style>
