@@ -5,12 +5,9 @@
       alt="Project image"
     />
     <div class="project__content">
-      <h3>This is the name of the project</h3>
+      <h3>{{ projectData.title }}</h3>
       <p>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus
-        quasi id maxime minima perferendis non error voluptas consequatur,
-        architecto minus aliquam quod ad obcaecati voluptatem accusamus sint ut
-        repellat odit.
+        {{ projectData.content }}
       </p>
       <div class="button__section">
         <button>Demo</button>
@@ -22,7 +19,13 @@
 
 <script>
 export default {
-  name: "Project Card"
+  name: "Project Card",
+  props: {
+    projectData: {
+      type: Object,
+      require: true
+    }
+  }
 };
 </script>
 
