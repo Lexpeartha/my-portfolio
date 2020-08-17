@@ -49,8 +49,10 @@ export default {
               "display: flex; padding-left: 20%; padding-right: 20%;";
           return styleString;
         case "text__area":
-          if (brpt == "small" || brpt == "medium")
+          if (brpt == "small")
             return "margin-top: 40px; margin-left: 10%; margin-right: 10%;";
+          if(brpt == "medium")
+            return "margin-top: 40px; margin-left: 20%; margin-right: 20%;"
           return this.right ? "margin-right: 8%;" : "margin-left: 8%;";
       }
     }

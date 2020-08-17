@@ -32,7 +32,7 @@
         consequatur dolores facilis soluta?</span
       >
     </TheContent>
-    <p>Contact me</p>
+    <TheContact />
     <p id="more">More section</p>
     <TheFooter />
   </div>
@@ -46,6 +46,7 @@ import TheMessageBoard from "@/components/MessageBoard.vue";
 import AboutMe from "@/components/AboutMe.vue";
 import ContentShowoff from "@/components/ContentShowoff.vue";
 import TheProjects from "@/components/TheProjects.vue";
+import ContactMe from "@/components/ContactMe.vue";
 import TheFooter from "@/components/TheFooter.vue";
 
 import { mapGetters } from "vuex";
@@ -60,6 +61,7 @@ export default {
     TheAbout: AboutMe,
     TheContent: ContentShowoff,
     TheProjects,
+    TheContact: ContactMe,
     TheFooter
   },
   created() {

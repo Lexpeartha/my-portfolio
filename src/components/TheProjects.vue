@@ -24,7 +24,7 @@ export default {
   },
   data() {
     return {
-      expanded: true,
+      expanded: false,
       projects: [
         {
           title: "This is the name of the project",
