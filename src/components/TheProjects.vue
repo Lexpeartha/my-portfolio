@@ -1,15 +1,27 @@
 <template>
-  <div class="projects__section">
-    <h1>This is title</h1>
-    <div class="project__cards">
-      <ProjectCard
-        v-for="projectNum in showingProjectAmount"
-        :key="projectNum"
-        :projectData="projects[projectNum - 1]"
-      />
+  <!-- This transition below doesn't work and needs fixing -->
+  <transition
+    name="section"
+    @after-enter="transitionComplete()"
+    @before-leave="transitionWillLeave()"
+  >
+    <div class="projects__section">
+      <h1>This is title</h1>
+      <transition-group
+        :duration="{ enter: 800, leave: 400 }"
+        name="projects"
+        tag="div"
+        class="project__cards"
+      >
+        <ProjectCard
+          v-for="projectNum in showingProjectAmount"
+          :key="projectNum"
+          :projectData="projects[projectNum - 1]"
+        />
+      </transition-group>
+      <ExpandButton @change-state="expandOrShrink()" :expand="expanded" />
     </div>
-    <ExpandButton @change-state="expandOrShrink()" :expand="expanded" />
-  </div>
+  </transition>
 </template>
 
 <script>
@@ -89,6 +101,12 @@ export default {
   methods: {
     expandOrShrink() {
       this.expanded = !this.expanded;
+    },
+    transitionComplete(el) {
+      el.style.height = "850px";
+    },
+    transitionWillLeave(el) {
+      el.style.height = "";
     }
   }
 };
@@ -115,10 +133,6 @@ export default {
   color: whitesmoke;
 }
 
-.projects__section:hover {
-  /* The part where it transitions to translateY and background shadow  */
-}
-
 .projects__section h1 {
   margin-bottom: 36px;
 }
@@ -128,5 +142,27 @@ export default {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
+}
+
+.projects-enter-active,
+.projects-leave-active {
+  transition: opacity 0.8s, transform 0.8s;
+}
+.projects-enter, .projects-leave-to /* .list-leave-active below version 2.1.8 */ {
+  opacity: 0;
+  transform: translateY(25px);
+}
+
+/* Code below doesn't work! */
+
+.section-enter-active,
+.section-leave {
+  height: 1400px;
+  transition: height 500ms;
+}
+.section-enter,
+.section-leave-active {
+  height: 850px;
+  transition: height 500ms;
 }
 </style>

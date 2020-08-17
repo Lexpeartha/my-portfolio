@@ -4,6 +4,7 @@
   3. Add modal views to project cards
   4. Implement 'More' section
   5. Write back-end endpoint to send form info to
+  6. Make better footer
 -->
 <template>
   <div id="app">
