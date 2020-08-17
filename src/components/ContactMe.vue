@@ -36,7 +36,7 @@
               `Keep it under 250 characters. ${250 - txtArea.length} left.`
             "
           />
-          <FormulateInput type="submit" label="Send" />
+          <FormulateInput type="submit" label="Send" @click="sendData()" />
         </div>
       </FormulateForm>
     </div>
@@ -58,6 +58,9 @@ export default {
     ...mapGetters(["breakpoint"])
   },
   methods: {
+    sendData() {
+      /* SEND DATA TO BACK-END */
+    },
     returnProperStyle(type) {
       let brpt = this.breakpoint;
       switch (type) {
