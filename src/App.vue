@@ -1,3 +1,10 @@
+<!-- TODOs:
+  1. Make better Navigation for smaller screens
+  2. Animate projects section
+  3. Add modal views to project cards
+  4. Implement 'More' section
+  5. Write back-end endpoint to send form info to
+-->
 <template>
   <div id="app">
     <component
