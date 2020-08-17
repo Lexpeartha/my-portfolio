@@ -1,27 +1,20 @@
 <template>
-  <!-- This transition below doesn't work and needs fixing -->
-  <transition
-    name="section"
-    @after-enter="transitionComplete()"
-    @before-leave="transitionWillLeave()"
-  >
-    <div class="projects__section">
-      <h1>This is title</h1>
-      <transition-group
-        :duration="{ enter: 800, leave: 400 }"
-        name="projects"
-        tag="div"
-        class="project__cards"
-      >
-        <ProjectCard
-          v-for="projectNum in showingProjectAmount"
-          :key="projectNum"
-          :projectData="projects[projectNum - 1]"
-        />
-      </transition-group>
-      <ExpandButton @change-state="expandOrShrink()" :expand="expanded" />
-    </div>
-  </transition>
+  <div class="projects__section" :class="expanded ? `exp` : `no-exp`">
+    <h1>This is title</h1>
+    <transition-group
+      :duration="{ enter: 800, leave: 400 }"
+      name="projects"
+      tag="div"
+      class="project__cards"
+    >
+      <ProjectCard
+        v-for="projectNum in showingProjectAmount"
+        :key="projectNum"
+        :projectData="projects[projectNum - 1]"
+      />
+    </transition-group>
+    <ExpandButton @change-state="expandOrShrink()" :expand="expanded" />
+  </div>
 </template>
 
 <script>
@@ -101,12 +94,6 @@ export default {
   methods: {
     expandOrShrink() {
       this.expanded = !this.expanded;
-    },
-    transitionComplete(el) {
-      el.style.height = "850px";
-    },
-    transitionWillLeave(el) {
-      el.style.height = "";
     }
   }
 };
@@ -131,6 +118,7 @@ export default {
   -ms-flex-pack: center;
   justify-content: center;
   color: whitesmoke;
+  transition: height 500ms ease-in-out;
 }
 
 .projects__section h1 {
@@ -146,23 +134,19 @@ export default {
 
 .projects-enter-active,
 .projects-leave-active {
-  transition: opacity 0.8s, transform 0.8s;
+  transition: opacity 500ms, transform 500ms;
 }
-.projects-enter, .projects-leave-to /* .list-leave-active below version 2.1.8 */ {
+.projects-enter, .projects-leave-to /* .projects-active for below version 2.1.8 */ {
   opacity: 0;
   transform: translateY(25px);
 }
 
-/* Code below doesn't work! */
-
-.section-enter-active,
-.section-leave {
-  height: 1400px;
-  transition: height 500ms;
-}
-.section-enter,
-.section-leave-active {
+.no-exp {
   height: 850px;
-  transition: height 500ms;
+  overflow: hidden;
+}
+
+.exp {
+  height: 1400px;
 }
 </style>
