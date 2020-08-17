@@ -1,10 +1,15 @@
 <template>
   <div id="contact-me" :style="returnProperStyle(`contact-me`)">
     <div class="wrapper">
-      <h2 class="contact__title" :style="returnProperStyle(`contact__title`)">Contact me</h2>
+      <h2 class="contact__title" :style="returnProperStyle(`contact__title`)">
+        Contact me
+      </h2>
       <hr style="opacity: 0.6;" />
       <FormulateForm values="formObject" class="contact__form">
-        <div class="contact__inputs" :style="returnProperStyle(`contact__inputs`)">
+        <div
+          class="contact__inputs"
+          :style="returnProperStyle(`contact__inputs`)"
+        >
           <FormulateInput
             type="email"
             name="email"
@@ -57,16 +62,13 @@ export default {
       let brpt = this.breakpoint;
       switch (type) {
         case "contact__title":
-          if(brpt == "small")
-            return "margin-left: 10%;";
+          if (brpt == "small") return "margin-left: 10%;";
           else return "";
         case "contact__inputs":
-          if(brpt == "small")
-            return "width: 80%;";
+          if (brpt == "small") return "width: 80%;";
           else return "";
         case "contact-me":
-          if(brpt == "small")
-            return "padding-left: 10%; padding-right: 10%;";
+          if (brpt == "small") return "padding-left: 10%; padding-right: 10%;";
           else return "";
         default:
           return "Don't";

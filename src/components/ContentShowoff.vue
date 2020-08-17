@@ -3,7 +3,7 @@
     <img
       :src="require(`@/assets/` + img.path)"
       :alt="img.name"
-      :style="returnProperStyle(`img`)"
+      :style="`height: ${returnScaledVersionOfImg()};`"
     />
     <div class="text__area" :style="returnProperStyle(`text__area`)">
       <h3>
@@ -51,10 +51,16 @@ export default {
         case "text__area":
           if (brpt == "small")
             return "margin-top: 40px; margin-left: 10%; margin-right: 10%;";
-          if(brpt == "medium")
-            return "margin-top: 40px; margin-left: 20%; margin-right: 20%;"
+          if (brpt == "medium")
+            return "margin-top: 40px; margin-left: 20%; margin-right: 20%;";
           return this.right ? "margin-right: 8%;" : "margin-left: 8%;";
       }
+    },
+    returnScaledVersionOfImg() {
+      let brpt = this.breakpoint;
+      if (brpt == "small") return "275px";
+      else if (brpt == "medium") return "300px";
+      else return "340px";
     }
   }
 };
@@ -68,7 +74,6 @@ export default {
 }
 
 .content img {
-  height: 280px;
 }
 
 .text__area p {
