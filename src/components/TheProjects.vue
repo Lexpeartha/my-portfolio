@@ -1,5 +1,10 @@
 <template>
-  <div ref="projects" class="projects__section" :class="expanded ? `exp` : `no-exp`">
+  <!-- ${notExpandedH} -->
+  <div
+    ref="projects"
+    class="projects__section"
+    :style="expanded ? `max-height: 2500px;` : `max-height: ${notExpandedH}; overflow: hidden;`"
+  >
     <h1>This is title</h1>
     <transition-group
       :duration="{ enter: 800, leave: 400 }"
@@ -27,18 +32,13 @@ export default {
     ProjectCard,
     ExpandButton
   },
-  async mounted() {
-    this.expanded = false;
+  mounted() {
+    //this.expanded = false; REMOVING THIS LINE SINCE IT IS ALREADY FALSE BY DEFAULT
     this.notExpandedH = this.$refs.projects.scrollHeight + "px";
-    this.expanded = true;
-    await new Promise(r => setTimeout(r, 600));
-    this.expandedH = this.$refs.projects.scrollHeight + "px";
-    this.expanded = false;
   },
   data() {
     return {
       notExpandedH: "",
-      expandedH: "",
       expanded: false,
       projects: [
         {
@@ -128,7 +128,7 @@ export default {
   -ms-flex-pack: center;
   justify-content: center;
   color: whitesmoke;
-  transition: height 500ms ease-in-out;
+  transition: max-height 500ms ease-in-out;
 }
 
 .projects__section h1 {
@@ -149,13 +149,5 @@ export default {
 .projects-enter, .projects-leave-to /* .projects-active for below version 2.1.8 */ {
   opacity: 0;
   transform: translateY(25px);
-}
-
-.no-exp {
-  height: auto;
-}
-
-.exp {
-  height: 1400px;
 }
 </style>
