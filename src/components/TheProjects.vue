@@ -1,9 +1,8 @@
 <template>
-  <!-- ${notExpandedH} -->
   <div
     ref="projects"
     class="projects__section"
-    :style="expanded ? `max-height: 2500px;` : `max-height: ${notExpandedH}; overflow: hidden;`"
+    :style="expanded ? `max-height: ${returnGoodHeight()};` : `max-height: ${notExpandedH}; overflow: hidden;`"
   >
     <h1>This is title</h1>
     <transition-group
@@ -26,6 +25,8 @@
 import ProjectCard from "@/components/ProjectCard.vue";
 import ExpandButton from "@/components/ExpandButton.vue";
 
+import { mapGetters } from "vuex";
+
 export default {
   name: "Projects",
   components: {
@@ -33,8 +34,7 @@ export default {
     ExpandButton
   },
   mounted() {
-    //this.expanded = false; REMOVING THIS LINE SINCE IT IS ALREADY FALSE BY DEFAULT
-    this.notExpandedH = this.$refs.projects.scrollHeight + "px";
+    this.updateHeight();
   },
   data() {
     return {
@@ -99,11 +99,27 @@ export default {
       if (this.expanded) {
         return this.projects.length;
       } else return 3;
-    }
+    },
+    testComp() {
+      this.updateHeight();
+      return "brpt-test:" + this.breakpoint;
+    },
+    ...mapGetters(["breakpoint"])
   },
   methods: {
     expandOrShrink() {
       this.expanded = !this.expanded;
+    },
+    updateHeight() {
+      this.expanded = false;
+      this.notExpandedH = this.$refs.projects.scrollHeight + "px";
+    },
+    returnGoodHeight() {
+      // CODE BELOW NEEDS CHANGES URGENTLY!
+      // RANDOM FIXED VALUES LIKE SHOULDN'T BE USED IN PRODUCTION, BUT RATHER BE CALCULATED
+      let brpt = this.breakpoint;
+      if(brpt == "medium" || brpt == "small") return "4000px"
+      else return "2500px;"
     }
   }
 };
