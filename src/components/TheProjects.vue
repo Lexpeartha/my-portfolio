@@ -1,13 +1,22 @@
 <template>
-  <div class="projects__section">
+  <div
+    ref="projects"
+    class="projects__section"
+    :style="expanded ? `max-height: ${returnGoodHeight()};` : `max-height: ${notExpandedH}; overflow: hidden;`"
+  >
     <h1>This is title</h1>
-    <div class="project__cards">
+    <transition-group
+      :duration="{ enter: 800, leave: 400 }"
+      name="projects"
+      tag="div"
+      class="project__cards"
+    >
       <ProjectCard
         v-for="projectNum in showingProjectAmount"
         :key="projectNum"
         :projectData="projects[projectNum - 1]"
       />
-    </div>
+    </transition-group>
     <ExpandButton @change-state="expandOrShrink()" :expand="expanded" />
   </div>
 </template>
@@ -16,15 +25,21 @@
 import ProjectCard from "@/components/ProjectCard.vue";
 import ExpandButton from "@/components/ExpandButton.vue";
 
+import { mapGetters } from "vuex";
+
 export default {
   name: "Projects",
   components: {
     ProjectCard,
     ExpandButton
   },
+  mounted() {
+    this.updateHeight();
+  },
   data() {
     return {
-      expanded: true,
+      notExpandedH: "",
+      expanded: false,
       projects: [
         {
           title: "This is the name of the project",
@@ -84,11 +99,27 @@ export default {
       if (this.expanded) {
         return this.projects.length;
       } else return 3;
-    }
+    },
+    testComp() {
+      this.updateHeight();
+      return "brpt-test:" + this.breakpoint;
+    },
+    ...mapGetters(["breakpoint"])
   },
   methods: {
     expandOrShrink() {
       this.expanded = !this.expanded;
+    },
+    updateHeight() {
+      this.expanded = false;
+      this.notExpandedH = this.$refs.projects.scrollHeight + "px";
+    },
+    returnGoodHeight() {
+      // CODE BELOW NEEDS CHANGES URGENTLY!
+      // RANDOM FIXED VALUES LIKE SHOULDN'T BE USED IN PRODUCTION, BUT RATHER BE CALCULATED
+      let brpt = this.breakpoint;
+      if(brpt == "medium" || brpt == "small") return "4000px"
+      else return "2500px;"
     }
   }
 };
@@ -113,10 +144,7 @@ export default {
   -ms-flex-pack: center;
   justify-content: center;
   color: whitesmoke;
-}
-
-.projects__section:hover {
-  /* The part where it transitions to translateY and background shadow  */
+  transition: max-height 500ms ease-in-out;
 }
 
 .projects__section h1 {
@@ -128,5 +156,14 @@ export default {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
+}
+
+.projects-enter-active,
+.projects-leave-active {
+  transition: opacity 500ms, transform 500ms;
+}
+.projects-enter, .projects-leave-to /* .projects-active for below version 2.1.8 */ {
+  opacity: 0;
+  transform: translateY(25px);
 }
 </style>

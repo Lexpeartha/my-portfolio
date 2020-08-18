@@ -2,10 +2,8 @@
   <div class="project__expands">
     <button @click="emitChange()">
       <i :class="'fas fa-arrow-' + (expand ? 'up' : 'down')"></i>
-      {{ expand ? 'Show less' : 'Show more' }}
-      <i
-        :class="'fas fa-arrow-' + (expand ? 'up' : 'down')"
-      ></i>
+      {{ expand ? "Show less" : "Show more" }}
+      <i :class="'fas fa-arrow-' + (expand ? 'up' : 'down')"></i>
     </button>
   </div>
 </template>

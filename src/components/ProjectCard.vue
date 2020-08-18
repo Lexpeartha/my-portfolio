@@ -35,11 +35,18 @@ export default {
   margin: 2em 0;
   max-width: 380px;
   border-radius: 15px;
+  transition: transform 100ms;
 }
 
 .project__card img {
   width: 100%;
   border-radius: 15px 15px 0 0;
+}
+
+.project__card:hover {
+  /* The part where it transitions to translateY and background shadow  */
+  box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.3), 0 8px 18px 0 rgba(0, 0, 0, 0.4);
+  transform: scale(1.02);
 }
 
 .project__content {
@@ -66,7 +73,7 @@ export default {
 
 .button__section i {
   font-size: 125%;
-  transition: transform 0.3s ease-out;
+  transition: transform 0.2s ease-out;
   cursor: pointer;
 }
 
