@@ -5,7 +5,7 @@
         Contact me
       </h2>
       <hr style="opacity: 0.6;" />
-      <FormulateForm values="formObject" class="contact__form">
+      <FormulateForm :values="formObject" class="contact__form">
         <div
           class="contact__inputs"
           :style="returnProperStyle(`contact__inputs`)"

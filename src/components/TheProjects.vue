@@ -1,5 +1,5 @@
 <template>
-  <div class="projects__section" :class="expanded ? `exp` : `no-exp`">
+  <div ref="projects" class="projects__section" :class="expanded ? `exp` : `no-exp`">
     <h1>This is title</h1>
     <transition-group
       :duration="{ enter: 800, leave: 400 }"
@@ -27,8 +27,18 @@ export default {
     ProjectCard,
     ExpandButton
   },
+  async mounted() {
+    this.expanded = false;
+    this.notExpandedH = this.$refs.projects.scrollHeight + "px";
+    this.expanded = true;
+    await new Promise(r => setTimeout(r, 600));
+    this.expandedH = this.$refs.projects.scrollHeight + "px";
+    this.expanded = false;
+  },
   data() {
     return {
+      notExpandedH: "",
+      expandedH: "",
       expanded: false,
       projects: [
         {
@@ -142,8 +152,7 @@ export default {
 }
 
 .no-exp {
-  height: 850px;
-  overflow: hidden;
+  height: auto;
 }
 
 .exp {
